@@ -46,7 +46,12 @@ dependencies {
     api deps.design
     api deps.xxtjsbridge
 //    api project(':commons')
-    api(name: 'polyvSDKCloudClass-0.16.4', ext: 'aar')
+    api ('net.polyv.android:polyvSDKCloudClass:0.16.4') {
+            exclude group:'com.github.bumptech.glide',module:'glide'
+            exclude group:'com.github.bumptech.glide',module:'gifdecoder'
+            exclude group:'com.tencent.bugly', module:'crashreport'
+            exclude group:'com.github.lzyzsd', module:'jsbridge'
+    }
     api ('net.polyv.android:polyvSDKBusiness:0.16.4') {
         exclude group:'com.github.bumptech.glide',module:'glide'
         exclude group:'com.github.bumptech.glide',module:'gifdecoder'
