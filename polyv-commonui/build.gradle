@@ -1,0 +1,72 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group='cn.xxt'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    compileOptions {
+        sourceCompatibility targetCompatibilityVersion
+        targetCompatibility targetCompatibilityVersion
+    }
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 161
+        versionName "0.16.1"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        consumerProguardFiles "proguard-rules.pro"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api deps.appcompatV7
+    api deps.gson
+    testImplementation deps.junit
+    api deps.design
+    api deps.xxtjsbridge
+//    api project(':commons')
+    api(name: 'polyvSDKCloudClass-0.16.4', ext: 'aar')
+    api ('net.polyv.android:polyvSDKBusiness:0.16.4') {
+        exclude group:'com.github.bumptech.glide',module:'glide'
+        exclude group:'com.github.bumptech.glide',module:'gifdecoder'
+        exclude group:'com.tencent.bugly', module:'crashreport'
+        exclude group:'com.github.lzyzsd', module:'jsbridge'
+    }
+    api ('net.polyv.android:polyvSDKLinkMic:0.16.4') {
+        exclude group:'com.github.bumptech.glide',module:'glide'
+        exclude group:'com.github.bumptech.glide',module:'gifdecoder'
+        exclude group:'com.tencent.bugly', module:'crashreport'
+        exclude group:'com.github.lzyzsd', module:'jsbridge'
+    }
+
+    api deps.supportAnnotations
+    //glide
+    api ('jp.wasabeef:glide-transformations:3.3.0'){
+//        exclude group:'com.github.bumptech.glide',module:'glide'
+    }
+    api ("com.github.bumptech.glide:okhttp3-integration:4.11.0"){
+//        exclude group:'com.github.bumptech.glide',module:'glide'
+    }
+    annotationProcessor deps.glideCompiler
+}

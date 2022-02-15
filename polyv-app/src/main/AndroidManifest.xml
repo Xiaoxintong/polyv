@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.easefun.polyv.cloudclassdemo">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <!--连麦-->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/ic_launcher"
+        android:usesCleartextTraffic="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        tools:replace="android:icon,android:theme">
+
+        <meta-data
+            android:name="Polyv-AES-KEY"
+            android:value="VXtlHmwfS2oYm0CZ"/>
+        <meta-data
+            android:name="Polyv-AES-IV"
+            android:value="2u9gDPKdX6GyQJKU"/>
+        <meta-data
+            android:name="Polyv-Config"
+            android:value="" />
+
+        <meta-data
+            android:name="Polyv-App-Id"
+            android:value="f2ssq35bh0"/>
+        <meta-data
+            android:name="Polyv-App-Secret"
+            android:value="9e60428ca8e142fca88c96086bfa7330"/>
+
+        <meta-data
+            android:name="Polyv-User-Id"
+            android:value="f6882bed33"/>
+
+        <activity
+            android:name=".login.PolyvCloudClassLoginActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+<!--            <intent-filter>-->
+
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".watch.PolyvCloudClassHomeActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+
+        </activity>
+
+        <provider
+            android:name="com.easefun.polyv.commonui.utils.PolyvFileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+    </application>
+
+</manifest>
